@@ -9,7 +9,10 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    "RobotoSlab-Regular": require('../assets/fonts/RobotoSlab-Regular'),
+    "RobotoSlab-Medium": require('../assets/fonts/RobotoSlab-Medium'),
+    "RobotoSlab-SemiBold": require('../assets/fonts/RobotoSlab-SemiBold'),
+    "RobotoSlab-Bold": require('../assets/fonts/RobotoSlab-Bold'),
   });
 
   if (!loaded) {
