@@ -8,7 +8,10 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "prebuild": "npx expo prebuild --clean  && npx expo prebuild",
+    "build": "eas build --platform  android --profile local --local",
+    "assemble": "cd android && ./gradlew assembleRelease && cd app/build/outputs/apk/release/ && adb push app-release.apk sdcard/ && cd .. && cd .."
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
