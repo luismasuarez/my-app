@@ -71,11 +71,11 @@ export default function LoginScreen() {
         </Button>
 
         <View style={styles.links}>
-          <Button mode="text" onPress={() => router.push('/register' as any)}>
+          <Button mode="text" onPress={() => router.push('/register')}>
             ¿No tienes cuenta? Regístrate
           </Button>
 
-          <Button mode="text" onPress={() => router.push('/forgot-password' as any)}>
+          <Button mode="text" onPress={() => router.push('/forgot-password')}>
             ¿Olvidaste tu contraseña?
           </Button>
         </View>
