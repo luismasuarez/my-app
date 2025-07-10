@@ -9,6 +9,7 @@ import 'react-native-reanimated';
 
 function RootLayoutNav() {
   const { user, isLoading } = useAuth();
+  console.log("User", user)
 
   if (isLoading) {
     return null; // Mostrar splash screen mientras carga
@@ -18,7 +19,7 @@ function RootLayoutNav() {
     <Stack>
       {user ? (
         // Usuario autenticado - mostrar app principal
-        <Stack.Screen name="(app)" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       ) : (
         // Usuario no autenticado - mostrar flujo de auth
         <Stack.Screen name="(auth)" options={{ headerShown: false }} />
