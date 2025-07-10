@@ -1,12 +1,22 @@
+import { useFonts } from 'expo-font';
 import { DefaultTheme } from 'react-native-paper';
+import { Colors } from '../constants/Colors';
+import { useColorScheme } from './useColorScheme';
 
 const useCustomTheme = () => {
+  const themeStyle = useColorScheme()
+
+  const [fontsLoaded] = useFonts({
+    "SmallFont": require('../../assets/fonts/RobotoSlab-Regular.ttf'),
+    "MediumFont": require('../../assets/fonts/RobotoSlab-Medium.ttf'),
+    "LargeFont": require('../../assets/fonts/RobotoSlab-Bold.ttf'),
+  });
+
   const theme = {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      primary: 'tomato',
-      secondary: 'yellow',
+      ...Colors[themeStyle ?? 'light'],
     },
     fonts: {
       ...DefaultTheme.fonts,
@@ -28,7 +38,7 @@ const useCustomTheme = () => {
     },
   };
 
-  return { theme }
+  return { theme, fontsLoaded }
 }
 
 export default useCustomTheme

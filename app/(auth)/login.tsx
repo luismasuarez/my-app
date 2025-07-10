@@ -1,4 +1,5 @@
 import { useAuth } from '@/core/contexts/AuthContext';
+import useCustomTheme from '@/core/hooks/useCustomTheme';
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
@@ -11,6 +12,7 @@ export default function LoginScreen() {
   const [error, setError] = useState('');
 
   const { signIn } = useAuth();
+  const { theme } = useCustomTheme();
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -31,8 +33,8 @@ export default function LoginScreen() {
   };
 
   return (
-    <View style={styles.container}>
-      <Surface style={styles.surface}>
+    <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
+      <Surface style={[styles.surface, { backgroundColor: theme.colors.surface }]}>
         <Text variant="headlineMedium" style={styles.title}>
           Bienvenido
         </Text>
@@ -89,7 +91,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
-    backgroundColor: '#f5f5f5',
   },
   surface: {
     padding: 20,

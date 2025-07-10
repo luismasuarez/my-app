@@ -1,6 +1,5 @@
 import { AuthProvider, useAuth } from '@/core/contexts/AuthContext';
 import useCustomTheme from '@/core/hooks/useCustomTheme';
-import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
@@ -9,7 +8,6 @@ import 'react-native-reanimated';
 
 function RootLayoutNav() {
   const { user, isLoading } = useAuth();
-  console.log("User", user)
 
   if (isLoading) {
     return null; // Mostrar splash screen mientras carga
@@ -30,13 +28,7 @@ function RootLayoutNav() {
 }
 
 export default function RootLayout() {
-  const { theme } = useCustomTheme()
-
-  const [fontsLoaded] = useFonts({
-    "SmallFont": require('../assets/fonts/RobotoSlab-Regular.ttf'),
-    "MediumFont": require('../assets/fonts/RobotoSlab-Medium.ttf'),
-    "LargeFont": require('../assets/fonts/RobotoSlab-Bold.ttf'),
-  });
+  const { theme, fontsLoaded } = useCustomTheme()
 
   useEffect(() => {
     if (fontsLoaded) {
