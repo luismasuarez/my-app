@@ -10,7 +10,9 @@
     "web": "expo start --web",
     "lint": "expo lint",
     "prebuild": "npx expo prebuild --clean  && npx expo prebuild",
-    "assemble": "cd android && ./gradlew assembleRelease && cd app/build/outputs/apk/release/ && adb push app-release.apk sdcard/ && cd .. && cd .."
+    "assemble": "cd android && ./gradlew assembleRelease && cd app/build/outputs/apk/release/ && adb push app-release.apk sdcard/ && cd .. && cd ..",
+    "build:android": "bash ./sign-and-build.sh android/app/keystore.jks myalias myStorePass myKeyPass release apk",
+    "build:android:bundle": "bash ./sign-and-build.sh android/app/keystore.jks myalias myStorePass myKeyPass release aab"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",

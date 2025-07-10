@@ -1,3 +1,4 @@
+import { AuthProvider, useAuth } from '@/core/contexts/AuthContext';
 import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -5,11 +6,33 @@ import { useEffect } from 'react';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import 'react-native-reanimated';
 
+
+function RootLayoutNav() {
+  const { user, isLoading } = useAuth();
+
+  if (isLoading) {
+    return null; // Mostrar splash screen mientras carga
+  }
+
+  return (
+    <Stack>
+      {user ? (
+        // Usuario autenticado - mostrar app principal
+        <Stack.Screen name="(app)" options={{ headerShown: false }} />
+      ) : (
+        // Usuario no autenticado - mostrar flujo de auth
+        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+      )}
+      <Stack.Screen name="+not-found" />
+    </Stack>
+  );
+}
+
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
-    "RobotoSlab-Small": require('../assets/fonts/RobotoSlab-Regular'),
-    "RobotoSlab-Medium": require('../assets/fonts/RobotoSlab-Medium'),
-    "RobotoSlab-Large": require('../assets/fonts/RobotoSlab-Bold'),
+    "RobotoSlab-Small": require('../assets/fonts/RobotoSlab-Regular.ttf'),
+    "RobotoSlab-Medium": require('../assets/fonts/RobotoSlab-Medium.ttf'),
+    "RobotoSlab-Large": require('../assets/fonts/RobotoSlab-Bold.ttf'),
   });
 
   const theme = {
@@ -52,10 +75,9 @@ export default function RootLayout() {
 
   return (
     <PaperProvider theme={theme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
+      <AuthProvider>
+        <RootLayoutNav />
+      </AuthProvider>
       <StatusBar style="auto" />
     </PaperProvider>
   );
