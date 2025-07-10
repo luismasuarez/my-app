@@ -1,34 +1,20 @@
-import { useThemeColor } from '@/core/hooks/useThemeColor';
-import { StyleSheet, type TextStyle } from 'react-native';
-import { Text } from 'react-native-paper';
+import React from 'react';
+import { StyleSheet, TextProps, TextStyle } from 'react-native';
+import { Text, useTheme } from 'react-native-paper';
 
-export type ThemedTextProps = {
-  lightColor?: string;
-  darkColor?: string;
-  type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link';
-  style?: TextStyle;
+type ThemedTextProps = TextProps & {
+  style?: TextStyle | TextStyle[];
   children: React.ReactNode;
 };
 
-export function ThemedText({
-  style,
-  lightColor,
-  darkColor,
-  type = 'default',
-  children,
-  ...rest
-}: ThemedTextProps) {
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
+export default function ThemedText({ style, children, ...rest }: ThemedTextProps) {
+  const theme = useTheme();
 
   return (
     <Text
       style={[
-        { color },
-        type === 'default' ? styles.default : undefined,
-        type === 'title' ? styles.title : undefined,
-        type === 'defaultSemiBold' ? styles.defaultSemiBold : undefined,
-        type === 'subtitle' ? styles.subtitle : undefined,
-        type === 'link' ? styles.link : undefined,
+        styles.text,
+        { color: theme.colors.onBackground },
         style,
       ]}
       {...rest}
@@ -39,27 +25,8 @@ export function ThemedText({
 }
 
 const styles = StyleSheet.create({
-  default: {
+  text: {
     fontSize: 16,
     lineHeight: 24,
-  },
-  defaultSemiBold: {
-    fontSize: 16,
-    lineHeight: 24,
-    fontWeight: '600',
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    lineHeight: 32,
-  },
-  subtitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  link: {
-    lineHeight: 30,
-    fontSize: 16,
-    color: '#0a7ea4',
   },
 });

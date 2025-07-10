@@ -3,10 +3,9 @@ import { Platform, StyleSheet } from 'react-native';
 
 import { HelloWave } from '@/core/components/HelloWave';
 import ParallaxScrollView from '@/core/components/ParallaxScrollView';
-import { ThemedText } from '@/core/components/ThemedText';
-import { ThemedView } from '@/core/components/ThemedView';
+import ThemedView from '@/core/components/ThemedView';
 import { useAuth } from '@/core/contexts/AuthContext';
-import { Button } from 'react-native-paper';
+import { Button, Text } from 'react-native-paper';
 
 export default function HomeScreen() {
   const { signOut } = useAuth()
@@ -20,39 +19,39 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
+        <Text variant='headlineMedium'>Welcome!</Text>
         <HelloWave />
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
+      <ThemedView style={styles.stepContainer} contained>
+        <Text variant='bodyLarge'>Step 1: Try it</Text>
+        <Text variant='bodySmall'>
+          Edit <Text variant='bodyMedium'>app/(tabs)/index.tsx</Text> to see changes.
           Press{' '}
-          <ThemedText type="defaultSemiBold">
+          <Text variant='bodyMedium'>
             {Platform.select({
               ios: 'cmd + d',
               android: 'cmd + m',
               web: 'F12',
             })}
-          </ThemedText>{' '}
+          </Text>{' '}
           to open developer tools.
-        </ThemedText>
+        </Text>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
+      <ThemedView style={styles.stepContainer} contained>
+        <Text variant='bodyLarge'>Step 2: Explore</Text>
+        <Text variant='bodySmall'>
           {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
+        </Text>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
+      <ThemedView style={styles.stepContainer} contained>
+        <Text variant='bodyLarge'>Step 3: Get a fresh start</Text>
+        <Text variant='bodySmall'>
           {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
+          <Text variant='bodyMedium'>npm run reset-project</Text> to get a fresh{' '}
+          <Text variant='bodyMedium'>app</Text> directory. This will move the current{' '}
+          <Text variant='bodyMedium'>app</Text> to{' '}
+          <Text variant='bodyMedium'>app-example</Text>.
+        </Text>
         <Button onPress={signOut}>Logout!</Button>
       </ThemedView>
     </ParallaxScrollView>
