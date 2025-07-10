@@ -35,7 +35,7 @@ export default function LoginScreen() {
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
       <Surface style={[styles.surface, { backgroundColor: theme.colors.surface }]}>
-        <Text variant="headlineMedium" style={styles.title}>
+        <Text variant="headlineLarge" style={styles.title}>
           Bienvenido
         </Text>
 
@@ -73,11 +73,11 @@ export default function LoginScreen() {
         </Button>
 
         <View style={styles.links}>
-          <Button mode="text" onPress={() => router.push('/register')}>
+          <Button mode="text" onPress={() => router.push('/register')} labelStyle={{ fontSize: 12 }}>
             ¿No tienes cuenta? Regístrate
           </Button>
 
-          <Button mode="text" onPress={() => router.push('/forgot-password')}>
+          <Button mode="text" onPress={() => router.push('/forgot-password')} labelStyle={{ fontSize: 12 }}>
             ¿Olvidaste tu contraseña?
           </Button>
         </View>
@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
   },
   input: {
     marginBottom: 15,
+    fontSize: 12
   },
   button: {
     marginTop: 10,
