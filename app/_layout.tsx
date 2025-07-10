@@ -17,7 +17,7 @@ function RootLayoutNav() {
     <Stack>
       {user ? (
         // Usuario autenticado - mostrar app principal
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="(app)" options={{ headerShown: false }} />
       ) : (
         // Usuario no autenticado - mostrar flujo de auth
         <Stack.Screen name="(auth)" options={{ headerShown: false }} />
