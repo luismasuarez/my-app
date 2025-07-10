@@ -33,9 +33,9 @@ export default function RootLayout() {
   const { theme } = useCustomTheme()
 
   const [fontsLoaded] = useFonts({
-    "RobotoSlab-Small": require('../assets/fonts/RobotoSlab-Regular.ttf'),
-    "RobotoSlab-Medium": require('../assets/fonts/RobotoSlab-Medium.ttf'),
-    "RobotoSlab-Large": require('../assets/fonts/RobotoSlab-Bold.ttf'),
+    "SmallFont": require('../assets/fonts/RobotoSlab-Regular.ttf'),
+    "MediumFont": require('../assets/fonts/RobotoSlab-Medium.ttf'),
+    "LargeFont": require('../assets/fonts/RobotoSlab-Bold.ttf'),
   });
 
   useEffect(() => {
